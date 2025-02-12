@@ -1,13 +1,13 @@
+import React from "react";
+import MainLayout from "./layouts/mainlayout";
+import HomePage from "./pages/homepage";
 
-import './App.css'
-
-function App() {
-
+const App = () => {
   return (
-    <>
-      <div className='text-red-200 text-2xl font-'>Hello</div>
-    </>
-  )
-}
+    <div>
+      <MainLayout />
+    </div>
+  );
+};
 
-export default App
+export default App;
