@@ -1,5 +1,6 @@
 import React from "react";
 import { Search } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const trends = [
   { id: 1, title: "ReactJS", tweets: "120K" },
@@ -16,24 +17,34 @@ const suggestions = [
 ];
 
 const RightSidebar = () => {
+  const navigate = useNavigate();
+
+  const handleHashtagClick = (tag) => {
+    navigate(`/tag/${tag}`);
+  };
+
   return (
-    <div className="w-full space-y-5 bg-[var(--color-dark)] text-white">
+    <div className="w-full space-y-5 bg-[var(--color-dark)] text-white self-auto">
       {/* Search Bar */}
       <div className="relative p-2">
         <input
           type="text"
           placeholder="Search"
-          className="w-full p-3 pl-10 border-1 text-white rounded-full"
+          className="w-full p-2 pl-10 border-[#2f3336] border-1 text-white rounded-full"
         />
         <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 " size={18} />
       </div>
 
       {/* Trending Section */}
-      <div className="border-1 p-4 rounded-lg">
+      <div className="border-[#2f3336] border-1 p-4 rounded-lg">
         <h2 className="font-bold text-xl mb-3">What's happening</h2>
         <ul className="space-y-3">
           {trends.map((trend) => (
-            <li key={trend.id} className="cursor-pointer hover:bg-gray-800 p-2 rounded-lg transition">
+            <li
+              key={trend.id}
+              onClick={() => handleHashtagClick(trend.title)}
+              className="cursor-pointer hover:bg-gray-800 p-2 rounded-lg transition"
+            >
               <p className="font-medium">#{trend.title}</p>
               <p className="text-sm text-gray-400">{trend.tweets} Tweets</p>
             </li>
@@ -42,7 +53,7 @@ const RightSidebar = () => {
       </div>
 
       {/* Who to Follow Section */}
-      <div className="border-1 p-4 rounded-lg">
+      <div className="border-[#2f3336] border-1 p-4 rounded-lg sticky">
         <h2 className="font-bold text-xl mb-3">Who to follow</h2>
         <ul className="space-y-3">
           {suggestions.map((user) => (

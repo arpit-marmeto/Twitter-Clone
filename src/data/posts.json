@@ -1,0 +1,16 @@
+[
+    {
+      "id": 1,
+      "user": {
+        "name": "Arpit",
+        "handle": "@arpitdev",
+        "avatar": "https://www.silcharmunicipality.in/wp-content/uploads/2021/02/male-face-1024x1024.jpg"
+      },
+      "content": "Building my portfolio with React! 🚀 #react #portfolio",
+      "image": "https://www.brookings.edu/wp-content/uploads/2017/11/metro_20171121_tech-empowers-tech-polarizes-mark-muro.jpg",
+      "likes": 120,
+      "comments": 45,
+      "shares": 10
+    }
+  ]
+  

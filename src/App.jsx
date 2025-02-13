@@ -1,11 +1,9 @@
 import React from "react";
-import MainLayout from "./layouts/mainlayout";
-import HomePage from "./pages/homepage";
-
+import Homepage from './pages/homepage'
 const App = () => {
   return (
     <div>
-      <MainLayout />
+       <Homepage/> 
     </div>
   );
 };

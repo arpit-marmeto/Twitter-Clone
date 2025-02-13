@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../assets/xx.svg";
 import { Home, Search, Bell, Mail, List, User, MoreHorizontal, Feather } from "lucide-react";
 
 const menuItems = [
@@ -15,41 +16,35 @@ const Sidebar = () => {
   return (
     <>
       {/* Sidebar for Desktop & Tablet */}
-      <div className="hidden md:flex fixed left-0 top-0 h-full md:w-20 xl:w-1/4 bg-[var(--color-dark)] border-r flex-col p-4">
+      <div className="sidebar md:flex fixed left-0 top-0 h-full md:w-1/4 bg-[var(--color-dark)] border-r border-[#2f3336] flex-col p-4">
         {/* Logo */}
-        <div className="mb-6 flex justify-center">
-          <h1 className="text-xl font-bold text-white">X</h1>
+        <div className="sidebar__logo mb-6 flex justify-start size-10 ml-2">
+          <img src={logo} alt="X Logo" className="w-full h-full" />
         </div>
-
         {/* Navigation */}
-        <nav className="flex flex-col space-y-4">
+        <nav className="sidebar__nav flex flex-col space-y-4">
           {menuItems.map((item) => (
             <a
               key={item.id}
               href={item.link}
-              className="flex items-center md:justify-center xl:justify-start space-x-4 p-3 rounded-full transition hover:bg-gray-800 text-white text-lg"
+              className="sidebar__nav-item flex items-center space-x-4 p-3 rounded-full transition hover:bg-gray-800 text-white text-lg"
             >
               <span>{item.icon}</span>
-              <span className="hidden xl:inline">{item.label}</span> {/* Show text only on xl */}
+              <span>{item.label}</span>
             </a>
           ))}
         </nav>
 
         {/* Post Button */}
-        <button className="mt-6 bg-blue-500 text-white font-semibold py-3 px-6 rounded-full w-full hidden xl:block hover:bg-blue-600">
+        <button className="sidebar__post-btn mt-6 bg-blue-500 text-white font-semibold py-3 px-6 rounded-full w-full hover:bg-blue-600">
           Post
-        </button>
-
-        {/* Floating Post Button for Tablet */}
-        <button className="mt-auto bg-blue-500 text-white p-3 rounded-full w-14 h-14 flex items-center justify-center xl:hidden">
-          <Feather size={24} />
         </button>
       </div>
 
       {/* Bottom Navigation for Mobile */}
-      <div className="fixed bottom-0 left-0 w-full bg-[var(--color-dark)] border-t border-gray-700 flex justify-around p-3 md:hidden">
+      <div className="sidebar__bottom-nav fixed bottom-0 left-0 w-full bg-[var(--color-dark)] border-t border-gray-700 flex justify-around p-3 md:hidden">
         {menuItems.slice(0, 5).map((item) => (
-          <a key={item.id} href={item.link} className="text-white p-2">
+          <a key={item.id} href={item.link} className="sidebar__bottom-nav-item text-white p-2">
             {item.icon}
           </a>
         ))}

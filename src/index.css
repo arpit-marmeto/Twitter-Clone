@@ -10,3 +10,17 @@
     --color-dark: #000;
     --color-light: #F3F4F6;
   }
+
+  @font-face {
+    font-family: 'TwitterChirp';
+    src: url('/twitterchirp.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* Apply globally (optional) */
+  body {
+    font-family: 'TwitterChirp', sans-serif;
+  }
+  
+  
