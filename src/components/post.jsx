@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Heart, MessageCircle, Repeat2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import timeAgo from "../utils/formatTime";
-import CommentPopup from "./CommentPopup";
+import CommentPopup from "./commentPopup";
 
 const Post = ({ post, onLike, onComment }) => {
   const [isLiked, setIsLiked] = useState(false);
