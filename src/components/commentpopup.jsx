@@ -9,10 +9,10 @@ const CommentPopup = ({ onClose, onSubmit }) => {
 
   const handleCommentSubmit = () => {
     if (!newComment.trim() && !selectedImage) return;
-
     onSubmit({ text: newComment, image: selectedImage });
     setNewComment("");
     setSelectedImage(null);
+    setShowEmojiPicker(false);
     onClose();
   };
 
@@ -22,61 +22,65 @@ const CommentPopup = ({ onClose, onSubmit }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-[#1a1a1a] p-5 rounded-lg w-[400px] relative">
-        {/* Header */}
-        <div className="flex justify-between items-center">
-          <h3 className="text-white text-lg font-semibold">Add a Comment</h3>
-          <X className="text-gray-400 cursor-pointer hover:text-white" onClick={onClose} />
-        </div>
+    <div className="fixed inset-0 bg-transparent backdrop-blur-xs bg-opacity-50 flex justify-center items-center z-50">
+      <div className="bg-[#0d0d0d] w-[500px] rounded-2xl p-4 shadow-lg relative">
+        {/* Close Button */}
+        <X className="absolute top-3 right-3 text-gray-400 cursor-pointer hover:text-white" onClick={onClose} />
 
-        {/* Text Input */}
-        <textarea
-          className="w-full bg-transparent border border-gray-600 rounded-md p-2 text-white mt-2 resize-none"
-          placeholder="Write a comment..."
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          rows="3"
-        />
+        {/* Comment Header */}
+        <div className="flex space-x-3 items-start">
+          {/* Profile Picture Placeholder */}
+          <div className="w-10 h-10 bg-gray-600 rounded-full"></div>
 
-        {/* Selected Image Preview */}
-        {selectedImage && (
-          <div className="mt-2 relative">
-            <img src={URL.createObjectURL(selectedImage)} alt="Preview" className="w-full rounded-md" />
-            <X className="absolute top-1 right-1 bg-gray-700 p-1 rounded-full text-white cursor-pointer" size={18} onClick={() => setSelectedImage(null)} />
+          {/* Comment Input Section */}
+          <div className="w-full">
+            <textarea
+              className="w-full bg-transparent text-white text-lg placeholder-gray-500 border-none focus:outline-none resize-none"
+              placeholder="Post your reply"
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              rows="2"
+            />
+
+            {/* Selected Image Preview */}
+            {selectedImage && (
+              <div className="mt-2 relative">
+                <img src={URL.createObjectURL(selectedImage)} alt="Preview" className="w-full rounded-lg" />
+                <X className="absolute top-1 right-1 bg-gray-700 p-1 rounded-full text-white cursor-pointer" size={18} onClick={() => setSelectedImage(null)} />
+              </div>
+            )}
+
+            {/* Action Icons */}
+            <div className="flex items-center justify-between mt-3 border-t border-gray-700 pt-3">
+              <div className="flex space-x-4 text-gray-400">
+                <label className="cursor-pointer hover:text-white">
+                  <Image size={20} />
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => setSelectedImage(e.target.files[0])}
+                  />
+                </label>
+                <button onClick={() => setShowEmojiPicker(!showEmojiPicker)} className="hover:text-white">
+                  <Smile size={20} />
+                </button>
+              </div>
+
+              <button
+                className="bg-gray-700 text-white px-4 py-2 rounded-full font-semibold hover:bg-gray-600 disabled:opacity-50"
+                onClick={handleCommentSubmit}
+                disabled={!newComment.trim() && !selectedImage}
+              >
+                Reply
+              </button>
+            </div>
           </div>
-        )}
-
-        {/* Actions: Image Upload & Emoji Picker */}
-        <div className="flex items-center justify-between mt-3">
-          <div className="flex space-x-3">
-            <label className="cursor-pointer text-blue-500 hover:bg-gray-800 p-2 rounded-full">
-              <Image size={22} />
-              <input
-                type="file"
-                accept="image/*"
-                className="hidden"
-                onChange={(e) => setSelectedImage(e.target.files[0])}
-              />
-            </label>
-
-            <button className="text-blue-500 hover:bg-gray-800 p-2 rounded-full" onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
-              <Smile size={22} />
-            </button>
-          </div>
-
-          <button
-            className="bg-blue-500 text-white font-semibold px-5 py-2 rounded-full hover:bg-blue-600 disabled:opacity-50"
-            onClick={handleCommentSubmit}
-            disabled={!newComment.trim() && !selectedImage}
-          >
-            Reply
-          </button>
         </div>
 
         {/* Emoji Picker */}
         {showEmojiPicker && (
-          <div className="absolute mt-2">
+          <div className="absolute bottom-16 left-12">
             <EmojiPicker onEmojiClick={handleEmojiClick} />
           </div>
         )}

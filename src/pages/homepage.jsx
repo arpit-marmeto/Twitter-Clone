@@ -5,11 +5,17 @@ import TagFeed from "../components/tagfeed"; // Import component to handle filte
 import RightSidebar from "../components/rightsidebar";
 import BottomNavigationBar from "../components/bottomnavigationbar"; // Import Bottom Navigation Bar
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import logo from "../assets/xx.svg";
 
 const Homepage = () => {
   return (
     <BrowserRouter>
       <div className="flex bg-[var(--color-dark)] text-white w-full min-h-screen flex-col">
+        {/* Top Navbar for Mobile */}
+        <div className="md:hidden top-0 left-0 w-full bg-[var(--color-dark)] border-b border-gray-700 flex items-center justify-center py-4 z-50">
+          <img src={logo} alt="X Logo" className="w-8 h-8" />
+        </div>
+
         <div className="flex flex-1">
           {/* Left Sidebar */}
           <div className="hidden md:flex md:w-1/4 min-h-screen fixed left-0 top-0 p-4">
@@ -32,7 +38,7 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Bottom Navigation Bar for Mobile */}
         <div className="md:hidden fixed bottom-0 left-0 w-full bg-[var(--color-dark)] border-t border-gray-700">
           <BottomNavigationBar />

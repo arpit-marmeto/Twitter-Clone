@@ -44,6 +44,30 @@ const Feed = () => {
     }
   }, [posts]);
 
+  // Handle Like
+  const handleLike = (postId, updatedLikes) => {
+    setPosts((prevPosts) => {
+      const updatedPosts = prevPosts.map((post) =>
+        post.id === postId ? { ...post, likes: updatedLikes } : post
+      );
+
+      localStorage.setItem("posts", JSON.stringify(updatedPosts));
+      return updatedPosts;
+    });
+  };
+
+  // Handle Comment
+  const handleComment = (postId, updatedComments) => {
+    setPosts((prevPosts) => {
+      const updatedPosts = prevPosts.map((post) =>
+        post.id === postId ? { ...post, comments: updatedComments } : post
+      );
+
+      localStorage.setItem("posts", JSON.stringify(updatedPosts));
+      return updatedPosts;
+    });
+  };
+
   // Calculate pagination indexes
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
@@ -69,7 +93,7 @@ const Feed = () => {
       {/* Posts List */}
       <div className="flex flex-col space-y-4">
         {currentPosts.map((post) => (
-          <Post key={post.id} post={post} />
+          <Post key={post.id} post={post} onLike={handleLike} onComment={handleComment} />
         ))}
       </div>
 
