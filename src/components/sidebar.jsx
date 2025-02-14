@@ -9,17 +9,17 @@ const menuItems = [
   { id: 2, label: "Explore", icon: <Search size={28} />, path: "/explore" },
   { id: 3, label: "Notifications", icon: <Bell size={28} />, path: "/notification" },
   { id: 4, label: "Messages", icon: <Mail size={28} />, path: "/messages" },
-  { id: 5, label: "Lists", icon: <List size={28} />, path: "/lists" },
-  { id: 6, label: "Profile", icon: <User size={28} />, path: "/profile" },
-  { id: 7, label: "More", icon: <MoreHorizontal size={28} />, path: "/more" },
+  { id: 5, label: "Lists", icon: <List size={28} />, path: "/" },
+  { id: 6, label: "Profile", icon: <User size={28} />, path: "/" },
+  { id: 7, label: "More", icon: <MoreHorizontal size={28} />, path: "/" },
 ];
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("theme") === "dark" ||
-      (!localStorage.getItem("theme") &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    (!localStorage.getItem("theme") &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
   );
 
   useEffect(() => {
@@ -36,14 +36,16 @@ const Sidebar = () => {
   return (
     <>
       {/* Sidebar for Desktop & Tablet */}
-      <div className="sidebar md:flex fixed left-0 top-0 h-full md:w-1/4 bg-white dark:bg-black border-r border-black dark:border-gray-700 flex-col p-4 transition-all">
+      <div className="sidebar md:flex fixed left-0 top-0 h-full md:w-1/4 bg-white dark:bg-black border-r border-black dark:border-gray-700 flex-col p-4 transition-all overflow-y-auto">
         {/* Logo */}
         <div className="sidebar__logo mb-6 flex justify-start size-10 ml-2">
-          <img
-            src={isDarkMode ? Lightlogo : Darklogo}
-            alt="X Logo"
-            className="w-full h-full transition-all"
-          />
+          <a href="/">
+            <img
+              src={isDarkMode ? Lightlogo : Darklogo}
+              alt="X Logo"
+              className="w-full h-full transition-all"
+            />
+          </a>
         </div>
 
         {/* Navigation */}
