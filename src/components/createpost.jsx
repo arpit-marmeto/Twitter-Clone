@@ -144,15 +144,19 @@ const CreatePost = ({ setPosts }) => {
             Post
           </button>
 
-          {/* Emoji Picker Popup */}
           {showEmojiPicker && (
             <div
               ref={emojiPickerRef}
               className="absolute top-12 left-0 bg-white dark:bg-gray-800 p-2 rounded-lg shadow-lg z-50 border border-black dark:border-gray-600"
             >
-              <EmojiPicker onEmojiClick={addEmoji} theme="auto" />
+              <EmojiPicker
+                onEmojiClick={addEmoji}
+                theme="auto"
+                width={250}  // Adjust width as needed
+              />
             </div>
           )}
+
         </div>
       </div>
     </div>
