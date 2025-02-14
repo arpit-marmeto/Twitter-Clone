@@ -2,7 +2,7 @@
 
 Welcome to the **Twitter Clone** project! This application replicates core features of Twitter, allowing users to post tweets, like, comment. It's built with modern web technologies to ensure a seamless and responsive user experience.
 
-## [Live Link](cloned-twitter.vercel.app)
+## [Live Link](https://cloned-twitter.vercel.app/)
 
 ## Table of Contents
 
