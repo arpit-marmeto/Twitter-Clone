@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Darklogo from '../assets/black-x-logo.svg';
 import Lightlogo from '../assets/white-x-logo.svg';
 import { Home, Search, Bell, Mail, List, User, MoreHorizontal } from "lucide-react";
 
 const menuItems = [
-  { id: 1, label: "Home", icon: <Home size={28} />, link: "#" },
-  { id: 2, label: "Explore", icon: <Search size={28} />, link: "#" },
-  { id: 3, label: "Notifications", icon: <Bell size={28} />, link: "#" },
-  { id: 4, label: "Messages", icon: <Mail size={28} />, link: "#" },
-  { id: 5, label: "Lists", icon: <List size={28} />, link: "#" },
-  { id: 6, label: "Profile", icon: <User size={28} />, link: "#" },
-  { id: 7, label: "More", icon: <MoreHorizontal size={28} />, link: "#" },
+  { id: 1, label: "Home", icon: <Home size={28} />, path: "/" },
+  { id: 2, label: "Explore", icon: <Search size={28} />, path: "/explore" },
+  { id: 3, label: "Notifications", icon: <Bell size={28} />, path: "/notification" },
+  { id: 4, label: "Messages", icon: <Mail size={28} />, path: "/messages" },
+  { id: 5, label: "Lists", icon: <List size={28} />, path: "/lists" },
+  { id: 6, label: "Profile", icon: <User size={28} />, path: "/profile" },
+  { id: 7, label: "More", icon: <MoreHorizontal size={28} />, path: "/more" },
 ];
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("theme") === "dark" ||
       (!localStorage.getItem("theme") &&
@@ -47,14 +49,14 @@ const Sidebar = () => {
         {/* Navigation */}
         <nav className="sidebar__nav flex flex-col space-y-4">
           {menuItems.map((item) => (
-            <a
+            <button
               key={item.id}
-              href={item.link}
+              onClick={() => navigate(item.path)}
               className="sidebar__nav-item flex items-center space-x-4 p-3 rounded-full transition text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-800"
             >
               <span>{item.icon}</span>
               <span>{item.label}</span>
-            </a>
+            </button>
           ))}
         </nav>
 
@@ -67,9 +69,9 @@ const Sidebar = () => {
       {/* Bottom Navigation for Mobile */}
       <div className="sidebar__bottom-nav fixed bottom-0 left-0 w-full bg-white dark:bg-black border-t border-black dark:border-gray-700 flex justify-around p-3 md:hidden">
         {menuItems.slice(0, 5).map((item) => (
-          <a key={item.id} href={item.link} className="sidebar__bottom-nav-item text-black dark:text-white p-2">
+          <button key={item.id} onClick={() => navigate(item.path)} className="sidebar__bottom-nav-item text-black dark:text-white p-2">
             {item.icon}
-          </a>
+          </button>
         ))}
       </div>
     </>

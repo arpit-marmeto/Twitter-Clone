@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
 import Sidebar from "../components/sidebar";
 import PostFeed from "../components/postfeed";
-import TagFeed from "../components/tagfeed"; 
+import TagFeed from "../components/tagfeed";
 import RightSidebar from "../components/rightsidebar";
 import BottomNavigationBar from "../components/bottomnavigationbar";
+import Notification from "../components/notification";
+import Explore from "../components/explore";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DarkLogo from "../assets/black-x-logo.svg";
 import LightLogo from "../assets/white-x-logo.svg";
+import Messages from "../components/messages";
 
 const Homepage = () => {
   const [darkMode, setDarkMode] = useState(
@@ -63,7 +66,10 @@ const Homepage = () => {
             <div className="w-full xl:w-4/4 lg:w-2/4 border-gray-300 dark:border-[#2f3336] border-1 transition-colors duration-300">
               <Routes>
                 <Route path="/" element={<PostFeed />} />
-                <Route path="/tag/:hashtag" element={<TagFeed />} /> {/* Route for hashtag filtering */}
+                <Route path="/tag/:hashtag" element={<TagFeed />} />
+                <Route path="/explore" element={<Explore />} />
+                <Route path="/notification" element={<Notification />} />
+                <Route path="/messages" element={<Messages />} />
               </Routes>
             </div>
 

@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Home, Search, Bell, Mail, SquarePen } from "lucide-react";
 
 const menuItems = [
-  { id: 1, icon: <Home size={24} />, link: "#" },
-  { id: 2, icon: <Search size={24} />, link: "#" },
+  { id: 1, icon: <Home size={24} />, link: "/" },
+  { id: 2, icon: <Search size={24} />, link: "/explore" },
   { id: 3, icon: <SquarePen size={24} />, link: "#", special: true },
-  { id: 4, icon: <Bell size={24} />, link: "#" },
-  { id: 5, icon: <Mail size={24} />, link: "#" },
+  { id: 4, icon: <Bell size={24} />, link: "/notification" },
+  { id: 5, icon: <Mail size={24} />, link: "/messages" },
 ];
 
 const BottomNavigationBar = ({ user }) => {
@@ -33,8 +34,9 @@ const BottomNavigationBar = ({ user }) => {
         bg-white dark:bg-[var(--color-dark)] border-t border-gray-300 dark:border-gray-700`}
     >
       {menuItems.map((item) => (
-        <button
+        <Link
           key={item.id}
+          to={item.link}
           className={`p-3 flex items-center justify-center transition-colors duration-300 
             ${
               item.special
@@ -43,7 +45,7 @@ const BottomNavigationBar = ({ user }) => {
             }`}
         >
           {item.icon}
-        </button>
+        </Link>
       ))}
     </nav>
   );
