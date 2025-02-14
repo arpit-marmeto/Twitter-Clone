@@ -113,7 +113,7 @@ const PostCard = ({ post, onLike, onComment, onDelete }) => {
               <h4 className="dark:text-white text-sm mb-2">Comments</h4>
               {comments.map((comment, index) => (
                 <div key={index} className="p-2 border-1 border-[#2f3336]">
-                  <span className="dark:text-gray-300 font-semibold">{comment.user}</span>:{" "}
+                  <span className="dark:text-gray-300 font-semibold">{comment.user}User</span>:{" "}
                   <span className="dark:text-white">{comment.text}</span>
                 </div>
               ))}

@@ -18,7 +18,10 @@ const defaultPosts = [
     content: "Excited to start this new journey! 🚀 #openai #tech #tesla",
     image: 'https://placedog.net/400/336?id=3',
     likes: 12,
-    comments: 5,
+    comments: [
+      { user: null, text: "Wow! Nature is amazing. 🌍" },
+      { user: null, text: "Where was this taken?" },
+    ],
     shares: 2,
     timestamp: "2025-02-14T10:00:00Z",
   },
@@ -32,7 +35,10 @@ const defaultPosts = [
     content: "What a beautiful sunset! 🌅",
     image: "https://res.cloudinary.com/tourhq/image/upload/fl_progressive,f_auto,h_507,w_900,g_auto,c_fill,q_auto/c1ujlot1ybrzuptlx16k",
     likes: 45,
-    comments: 12,
+    comments: [
+      { user: null, text: "Still skeptical, but let’s see. 👀" },
+      { user: null, text: "This is going to be revolutionary!" },
+    ],
     shares: 8,
     timestamp: "2025-02-13T15:30:00Z",
   },
@@ -46,7 +52,10 @@ const defaultPosts = [
     content: "Metaverse is the future. Are you ready? #ai #reactjs #metaverse #tech",
     image: 'https://media.istockphoto.com/id/1382275016/photo/metaverse-city-concept-3d-render.jpg?s=612x612&w=0&k=20&c=-AuMFzEX67f1xKm0pcpcREsTvxNMJ2SH5zyyTjnPzLs=',
     likes: 78,
-    comments: 20,
+    comments: [
+      { user: null , text: "Wishing you all the best! 🚀🔥" },
+      { user: null , text: "Looking forward to it!" },
+    ],
     shares: 15,
     timestamp: "2025-02-12T12:00:00Z",
   }

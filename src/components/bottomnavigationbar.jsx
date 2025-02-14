@@ -38,11 +38,6 @@ const BottomNavigationBar = ({ user, onPostSubmit }) => {
         {menuItems.map((item) => (
           <button
             key={item.id}
-            onClick={() => {
-              if (item.special) {
-                setShowCreatePostPopup(true);
-              }
-            }}
             className={`p-3 flex items-center justify-center transition-colors duration-300 
               ${
                 item.special
@@ -54,15 +49,6 @@ const BottomNavigationBar = ({ user, onPostSubmit }) => {
           </button>
         ))}
       </nav>
-
-      {/* Render CreatePostPopup */}
-      {showCreatePostPopup && (
-        <CreatePostPopup
-          onClose={() => setShowCreatePostPopup(false)}
-          onSubmit={onPostSubmit}
-          user={user}
-        />
-      )}
     </>
   );
 };
