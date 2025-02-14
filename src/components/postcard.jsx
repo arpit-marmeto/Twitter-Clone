@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Heart, MessageCircle, Repeat2, MoreHorizontal, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import timeAgo from "../utils/formatTime";
-import CommentPopup from "./commentPopup";
+import CommentPopup from "./commentpopup";
 
 const PostCard = ({ post, onLike, onComment, onDelete }) => {
   const [isLiked, setIsLiked] = useState(false);
